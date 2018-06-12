@@ -1,5 +1,7 @@
-language: scala
-scala:
-  - 2.12.5
-script:
-  - sbt "project app" compile
+language: node_js
+node_js:
+  - 8
+  - 9
+cache:
+  directories:
+  - node_modules
