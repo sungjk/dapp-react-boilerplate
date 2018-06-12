@@ -4,5 +4,5 @@ import "./Ownable.sol";
 import "./Strings.sol";
 
 contract TalkTalk {
-
+    constructor() public {}
 }

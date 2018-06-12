@@ -2,7 +2,6 @@ pragma solidity ^0.4.23;
 
 // https://github.com/willitscale/learning-solidity/blob/master/tutorial-07/Strings.sol
 library Strings {
-
     function concat(string _base, string _value) internal pure returns (string) {
         bytes memory _baseBytes = bytes(_base);
         bytes memory _valueBytes = bytes(_value);
@@ -17,7 +16,7 @@ library Strings {
             _newValue[j++] = _baseBytes[i];
         }
 
-        for (i=0; i<_valueBytes.length; i++) {
+        for (i = 0; i < _valueBytes.length; i++) {
             _newValue[j++] = _valueBytes[i++];
         }
 
@@ -33,12 +32,15 @@ library Strings {
         bytes memory b = bytes(_b);
         uint minLength = a.length;
         if (b.length < minLength) minLength = b.length;
+
         //@todo unroll the loop into increments of 32 and do full 32 byte comparisons
-        for (uint i = 0; i < minLength; i ++)
+        for (uint i = 0; i < minLength; i ++) {
             if (a[i] < b[i])
                 return -1;
             else if (a[i] > b[i])
                 return 1;
+        }
+
         if (a.length < b.length)
             return -1;
         else if (a.length > b.length)
@@ -56,26 +58,25 @@ library Strings {
     function indexOf(string _haystack, string _needle) internal pure returns (int) {
         bytes memory h = bytes(_haystack);
         bytes memory n = bytes(_needle);
-        if(h.length < 1 || n.length < 1 || (n.length > h.length))
+
+        if (h.length < 1 || n.length < 1 || (n.length > h.length))
             return -1;
-        else if(h.length > (2**128 -1)) // since we have to be able to return -1 (if the char isn't found or input error), this function must return an "int" type with a max length of (2^128 - 1)
+        else if (h.length > (2**128 - 1)) // since we have to be able to return -1 (if the char isn't found or input error), this function must return an "int" type with a max length of (2^128 - 1)
             return -1;
-        else
-        {
+        else {
             uint subindex = 0;
-            for (uint i = 0; i < h.length; i ++)
-            {
-                if (h[i] == n[0]) // found the first char of b
-                {
+            for (uint i = 0; i < h.length; i ++) {
+                if (h[i] == n[0]) { // found the first char of b
                     subindex = 1;
-                    while(subindex < n.length && (i + subindex) < h.length && h[i + subindex] == n[subindex]) // search until the chars don't match or until we reach the end of a or b
-                    {
+                    while (subindex < n.length && (i + subindex) < h.length && h[i + subindex] == n[subindex]) {// search until the chars don't match or until we reach the end of a or b
                         subindex++;
                     }
-                    if(subindex == n.length)
+
+                    if (subindex == n.length)
                         return int(i);
                 }
             }
+
             return -1;
         }
     }
