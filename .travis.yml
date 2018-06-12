@@ -8,6 +8,9 @@ node_js:
 install:
   - yarn
 
+before_script:
+  - npm install -g solium
+
 script:
   - yarn lint
   - solium -d contracts
