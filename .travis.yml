@@ -10,12 +10,10 @@ install:
 
 before_script:
   - npm install -g solium
-  - npm install -g truffle
 
 script:
   - yarn lint
   - solium -d contracts
-  - truffle compile
 
 cache:
   directories:
