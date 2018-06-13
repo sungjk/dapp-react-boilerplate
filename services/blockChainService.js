@@ -1,5 +1,5 @@
 import contract from 'truffle-contract';
-import TalkTalkArtifact from '../build/contracts/TalkTalk';
+import EthChatArtifact from '../build/contracts/EthChat';
 
 let web3Instance;
 

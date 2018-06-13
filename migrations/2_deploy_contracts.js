@@ -1,5 +1,5 @@
-var TalkTalk = artifacts.require('./TalkTalk.sol');
+var EthChat = artifacts.require('./EthChat.sol');
 
 module.exports = function(deployer) {
-    deployer.deploy(TalkTalk);
+    deployer.deploy(EthChat);
 };
